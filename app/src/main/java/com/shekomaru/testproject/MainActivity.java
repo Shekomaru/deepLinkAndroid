@@ -1,5 +1,6 @@
 package com.shekomaru.testproject;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.applinks.AppLinkData;
+
+import bolts.AppLinks;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -26,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Uri targetUrl = AppLinks.getTargetUrlFromInboundIntent(this, getIntent());
+        if (targetUrl != null) {
+            Log.d(TAG, "onCreate: targetUrl = " + targetUrl);
+            Toast.makeText(MainActivity.this, "targetUrl = " + targetUrl, Toast.LENGTH_SHORT).show();
+        }
 
         if (getIntent() != null) {
             Log.i(TAG, "onCreate: Intent = " + getIntent());

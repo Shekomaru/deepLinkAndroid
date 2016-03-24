@@ -21,8 +21,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="sharesample"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sharething"/>
             </intent-filter>
+                <!--<data android:scheme="sharesample"/>-->
 
         </activity>
 
